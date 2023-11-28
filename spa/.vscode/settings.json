@@ -1,0 +1,13 @@
+{
+  "[typescriptreact][javascript][scss][html][json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": true,
+    "quickfix.biome": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}

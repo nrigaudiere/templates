@@ -1,0 +1,14 @@
+{
+  "entryPoints": ["src/index.tsx", "src/app.scss"],
+  "entryNames": "[name]",
+  "alias": {
+    "@rigaudon/helpers": "src/helpers/",
+    "@rigaudon/types": "src/types/"
+  },
+  "platform": "browser",
+  "bundle": true,
+  "jsx": "automatic",
+  "color": true,
+  "logLevel": "warning",
+  "outdir": "output/dist"
+}

@@ -1,0 +1,52 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+name: Lint
+jobs:
+  biomeCI:
+    name: Biome CI
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 20.9.0
+      - name: Cache Node Modules
+        id: cache
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ./node_modules
+          key: node-20.9.0-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/package-lock.json') }}
+      - run: yarn install --frozen-lockfile
+      - name: Lint
+        run: make lint
+  esbuild:
+    name: EsBuild
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 20.9.0
+      - name: Cache Node Modules
+        id: cache
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ./node_modules
+          key: node-20.9.0-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/package-lock.json') }}
+      - run: yarn install --frozen-lockfile
+      - name: Build
+        run: make build

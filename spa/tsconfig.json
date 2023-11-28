@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@rigaudon/helpers/*": ["src/helpers/*"],
+      "@rigaudon/components/*": ["src/components/*"],
+      "@rigaudon/signals/*": ["src/signals/*"],
+      "@rigaudon/types/*": ["src/types/*"],
+      "@rigaudon/pages/*": ["src/pages/*"]
+    },
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": [
+    "node_modules"
+  ]
+}
